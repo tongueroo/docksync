@@ -3,6 +3,7 @@ PATH
   specs:
     docksync (0.0.1)
       colorize
+      filewatcher
       hashie
       thor
 
@@ -15,9 +16,12 @@ GEM
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     colorize (0.7.5)
+    curses (1.0.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     ffi (1.9.6)
+    filewatcher (0.3.6)
+      trollop (~> 2.0)
     formatador (0.2.5)
     guard (2.10.5)
       formatador (>= 0.2.4)
@@ -74,6 +78,8 @@ GEM
     thor (0.19.1)
     timers (4.0.1)
       hitimes
+    trollop (2.1.0)
+      curses
 
 PLATFORMS
   ruby

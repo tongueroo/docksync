@@ -51,19 +51,30 @@ module Docksync
         # -z, --compress              compress file data during the transfer
         # -S, --sparse                handle sparse files efficiently
         # -v, --verbose               verbose
-        exclude = %w/.git tmp/
-        if File.exist?("#{@cwd}/.gitignore")
-          exclude += File.read("#{@cwd}/.gitignore").split("\n")
-        end
-        if File.exist?("#{@cwd}/.dockerignore")
-          exclude += File.read("#{@cwd}/.dockerignore").split("\n")
-        end
+        exclude = %w/.git tmp log/
+        exclude += get_excludes('.gitignore')
+        exclude += get_excludes('.dockerignore')
         exclude = exclude.uniq.map{|path| "--exclude='#{path}'"}.join(' ')
         options = "--delete --numeric-ids --safe-links -axzSv #{exclude}"
-        src = "./"
+        src = get_src
         dest = "rsync://#{dockerhost}:#{dockerport}/volume/"
 
         "rsync #{options} #{src} #{dest}"
+      end
+
+      def get_excludes(file)
+        exclude = []
+        path = "#{@options[:cwd]}/#{file}"
+        if File.exist?(path)
+          exclude = File.read(path).split("\n")
+        end
+        result = exclude.map {|i| i.strip}.reject {|i| i =~ /^#/ || i.empty?}
+        result
+      end
+
+      def get_src
+        src = @options[:cwd] || '.'
+        src[-1] == '/' ? src : "#{src}/"
       end
     end
   end

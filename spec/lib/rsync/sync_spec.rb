@@ -4,7 +4,8 @@ describe Docksync::Rsync::Sync do
   before(:all) do
     @sync = Docksync::Rsync::Sync.new(
       cid: 'abcde',
-      mute: true
+      mute: true,
+      cwd: 'spec/fixtures/project'
     )
   end
 
@@ -27,6 +28,11 @@ describe Docksync::Rsync::Sync do
       allow(@sync).to receive(:leave)
       allow(@sync).to receive(:docker_ps_for_port).and_return(ps_out)
       expect(@sync.dockerport).to match /Could not find expose port 873/
+    end
+
+    it "should get excludes from .gitignore" do
+      exclude = @sync.get_excludes('.gitignore')
+      expect(exclude).to include "*.dump"
     end
   end
 end

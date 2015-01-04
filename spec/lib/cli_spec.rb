@@ -14,8 +14,7 @@ describe Docksync::CLI do
 
     it "should watch files and keep rysncing" do
       out = execute("bin/docksync watch #{@cid} #{@args}")
-      expect(out).to include("Done rsyncing to container #{@cid}")
-      expect(out).to include("Watching dir: ")
+      expect(out).to include("Watching dir")
     end
   end
 end
