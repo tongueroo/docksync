@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+$:.unshift(File.expand_path('../../lib', __FILE__))
+require 'docksync'
+require 'docksync/cli'
+
+Docksync::CLI.start(ARGV)
