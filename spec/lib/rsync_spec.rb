@@ -4,22 +4,16 @@ describe Docksync::Rsync do
   before(:all) do
     @rsync = Docksync::Rsync.new(
       cid: 'abcde',
+      noop: true,
       mute: true
     )
   end
 
   describe "docksync" do
-    it "should install rsync" do
+    it "should install and run rsync" do
+      out = @rsync.run # mainly to check syntax of rsync class
+      expect(out).to eq "Done rsyncing to container abcde"
     end
 
-    it "should run rsync" do
-    end
-
-    # internal methods
-    it "should buid container_copy_command" do
-      allow(@rsync).to receive(:docker_inspect).and_return("abcde")
-      command = @rsync.container_copy_command('src')
-      expect(command).to eq(%Q|boot2docker ssh "cp src /var/lib/docker/aufs/mnt/abcde/tmp/"|)
-    end
   end
 end

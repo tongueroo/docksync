@@ -6,7 +6,7 @@ describe Docksync::CLI do
     @cid = "abcde"
   end
 
-  describe "docksync" do
+  describe "cli" do
     it "should rsync once and quit" do
       out = execute("bin/docksync rsync #{@cid} #{@args}")
       expect(out).to include("Done rsyncing to container #{@cid}")

@@ -8,7 +8,7 @@ Rsync local files to docker container once.
 
 Examples:
 
-  $ docksync rsync --cid abcde
+  $ docksync rsync abcde
 EOL
         end
 
@@ -18,7 +18,7 @@ Watch local files and continuously rsync to container.
 
 Examples:
 
-  $ docksync watch --cid abcde
+  $ docksync watch abcde
 EOL
         end
       end
