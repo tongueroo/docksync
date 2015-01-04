@@ -24,9 +24,9 @@ Sharing volumes from macosx to the docker host to the container is extremely slo
 
 ## Usage
 
-  $ docksync watch --container-id [CONTAINER_ID]
+  $ docksync watch [CONTAINER_ID]
 
 Example:
 
   $ cd project
-  $ docksync watch --container-id abcde
+  $ docksync watch abcde
