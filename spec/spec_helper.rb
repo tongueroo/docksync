@@ -1,8 +1,5 @@
 ENV['TEST'] = '1'
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 require "pp"
  
 root = File.expand_path('../../', __FILE__)
