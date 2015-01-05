@@ -1,8 +1,8 @@
 # Docksync
 
-[![Build Status](https://magnum.travis-ci.com/)](https://magnum.travis-ci.com/)
-[![Code Climate](https://codeclimate.com/)](https://codeclimate.com/)
-[![Code Climate](https://codeclimate.com/)](https://codeclimate.com/)
+
+[![Build Status](https://travis-ci.org/tongueroo/docksync.svg?branch=master)](https://travis-ci.org/tongueroo/docksync)
+[![Code Climate](https://codeclimate.com/github/tongueroo/docksync/badges/gpa.svg)](https://codeclimate.com/github/tongueroo/docksync)
 
 Tool to rsync your files from your macosx machine to the docker container.  
 
@@ -20,13 +20,25 @@ Sharing volumes from macosx to the docker host to the container is extremely slo
 
 ## Installation
 
-  $ gem install docksync
+<pre>
+$ gem install docksync
+</pre>
 
 ## Usage
 
-  $ docksync watch [CONTAINER_ID]
+<pre>
+$ docksync watch [CONTAINER_ID]
+</pre>
 
 Example:
 
-  $ cd project
-  $ docksync watch abcde
+<pre>
+$ cd project
+$ docksync watch abcde
+</pre>
+
+For more help:
+
+<pre>
+$ docksync help
+</pre>

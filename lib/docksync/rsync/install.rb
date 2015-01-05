@@ -46,7 +46,9 @@ module Docksync
       end
 
       def app_root
-        # TODO: grab from Dockerfile
+        dockerfile = @options[:cwd] + "/Dockerfile"
+        data = File.read(dockerfile).split("\n").grep(/WORKDIR/)
+        workdir = data.first.split(' ').last
       end
 
     end
