@@ -12,10 +12,9 @@ module Docksync
         ignore = %w[. .. .git log tmp]
         files = Dir.glob(['.*','*']) - ignore
         return false if @options[:noop]
-        Rsync::Install.new(@options).run
-        Rsync::Sync.new(@options).run
+        Rsync.new(@options).run
         FileWatcher.new(files).watch() do |filename, event|
-          Rsync::Sync.new(@options).run
+          Rsync.new(@options.merge(:skip_install => true)).run
         end
       end
     end

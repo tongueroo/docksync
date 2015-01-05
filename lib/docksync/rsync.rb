@@ -14,11 +14,20 @@ module Docksync
 
     def run
       unless @options[:noop]
-        Install.new(@options).run 
+        check
+        Install.new(@options).run unless @options[:skip_install]
         Sync.new(@options).run
       end
       msg = "Done rsyncing to container #{@cid}"
       @options[:mute] ? msg : puts(msg)
+    end
+
+    def check
+      running = `docker inspect -f {{.State.Running}} #{@cid}`.strip == 'true'
+      unless running
+        puts "Container #{@cid} is not running".colorize(:red)
+        exit 0
+      end
     end
   end
 end
