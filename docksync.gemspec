@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Docksync::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Rsync files from your macosx machine to the docker container}
+  spec.summary       = %q{Rsync files from your macosx machine to the docker container}
   spec.homepage      = ""
   spec.license       = "MIT"
 
